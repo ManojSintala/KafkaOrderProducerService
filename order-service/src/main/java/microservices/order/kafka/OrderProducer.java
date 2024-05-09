@@ -21,6 +21,7 @@ public class OrderProducer {
     public void publish(OrderEvent event) {
         LOGGER.info(String.format("Publishing event: %s", event.toString()));
 
+        // Adding topic name into the message
         Message<OrderEvent> message = MessageBuilder
                 .withPayload(event)
                 .setHeader(KafkaHeaders.TOPIC, topic.name())
